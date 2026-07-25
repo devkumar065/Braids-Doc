@@ -99,14 +99,14 @@ export function CustomCursor() {
       {/* Precision inner point */}
       <div
         ref={dotRef}
-        className="pointer-events-none fixed left-0 top-0 z-[9999] h-1.5 w-1.5 rounded-full bg-gold transition-opacity duration-300"
+        className="pointer-events-none fixed left-0 top-0 z-[9999] h-1.5 w-1.5 rounded-full bg-gold transition-opacity duration-300 hidden md:block"
         style={{ opacity: isHovered ? 0 : 1 }}
       />
 
       {/* Main Liquid Velocity-Stretching Ring */}
       <div
         ref={cursorRef}
-        className={`pointer-events-none fixed left-0 top-0 z-[9998] flex items-center justify-center rounded-full transition-[width,height,background-color,border-color,box-shadow,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`pointer-events-none fixed left-0 top-0 z-[9998] hidden md:flex items-center justify-center rounded-full transition-[width,height,background-color,border-color,box-shadow,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
         isClicking
           ? "h-8 w-8 bg-gold/50 border-gold shadow-[0_0_25px_rgba(201,162,76,0.7)]"
           : isHovered

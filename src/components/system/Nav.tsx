@@ -93,7 +93,7 @@ export function Nav() {
           `}</style>
 
           <div
-            className={`relative z-10 flex w-full items-center justify-between rounded-[calc(1.25rem-1px)] bg-[#080605]/95 px-6 py-4 shadow-[0_10px_40px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-shadow duration-500 md:px-10 ${
+            className={`relative z-10 flex w-full items-center justify-between rounded-[calc(1.25rem-1px)] bg-ink/95 px-6 py-4 shadow-[0_10px_40px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-shadow duration-500 md:px-10 ${
               scrolled ? "shadow-[0_0_35px_rgba(201,162,76,0.25)]" : ""
             }`}
           >
