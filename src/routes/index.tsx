@@ -70,38 +70,20 @@ function Hero() {
       className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-ink"
     >
       {/* Background Image containing the brand name */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center pt-20">
+      <div className="absolute inset-0 z-0 flex items-center justify-center pt-[100px] sm:pt-[120px]">
         <motion.img
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           src={heroBg}
           alt="Braids Doc Luxury Braiding Studio"
-          className="h-full w-full object-contain md:object-cover object-center p-4 md:p-0"
+          className="h-full w-full object-cover object-top"
         />
         {/* Subtle bottom gradient to blend with the next section */}
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
       </div>
 
-      {/* Paragraph text absolutely positioned below the logo in the image */}
-      <div className="absolute bottom-[40px] sm:bottom-[56px] md:bottom-[72px] left-0 right-0 z-10 flex flex-col items-center px-4 text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="text-[8px] sm:text-[10px] md:text-xs uppercase tracking-[0.2em] sm:tracking-[0.4em] text-ivory/90"
-        >
-          Premium braiding · Personalized beauty
-        </motion.p>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-          className="mt-2 text-[8px] sm:text-[10px] md:text-xs uppercase tracking-[0.2em] sm:tracking-[0.4em] text-ivory/70"
-        >
-          Confidence, styled by experts
-        </motion.p>
-      </div>
+
     </section>
   );
 }

@@ -9,7 +9,6 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CustomCursor } from "@/components/system/CustomCursor";
 import { SmoothScroll } from "@/components/system/SmoothScroll";
 import { GrainOverlay } from "@/components/system/GrainOverlay";
@@ -36,9 +35,6 @@ function NotFoundComponent() {
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
   return (
     <div className="flex min-h-screen items-center justify-center bg-ink px-4">
       <div className="max-w-md text-center">
@@ -75,8 +71,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "Braids Doc — Luxury Braiding Studio in Los Angeles" },
       { property: "og:description", content: "Premium braiding. Personalized beauty. Confidence, styled by experts. Book knotless, Fulani, boho and stitch braids in LA." },
       { name: "twitter:description", content: "Premium braiding. Personalized beauty. Confidence, styled by experts. Book knotless, Fulani, boho and stitch braids in LA." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/cf0628fd-9ce8-441e-a25f-96738927fa99/id-preview-f7e92e6d--e6b26fe0-1f8d-4c28-8bdc-90d5aa68b99c.lovable.app-1784989438512.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/cf0628fd-9ce8-441e-a25f-96738927fa99/id-preview-f7e92e6d--e6b26fe0-1f8d-4c28-8bdc-90d5aa68b99c.lovable.app-1784989438512.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

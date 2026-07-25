@@ -1,29 +1,27 @@
-# Welcome to your Lovable project
+# Golden Threads — Luxury Braiding Studio
 
-This project was built with [Lovable](https://lovable.dev).
+A premium, custom-built TanStack Start application for a luxury braiding studio.
 
-## Build with Lovable
+## Tech Stack
+- **Framework:** TanStack Start (React + SSR)
+- **Routing:** TanStack Router
+- **Styling:** Tailwind CSS 4
+- **Animations:** Framer Motion & GSAP
+- **Components:** Radix UI
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+## Getting Started
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+To run the development server:
+```bash
 npm run dev
 ```
 
-## Built with
+To build for production:
+```bash
+npm run build
+```
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+To preview the production build locally:
+```bash
+npm run preview
+```
