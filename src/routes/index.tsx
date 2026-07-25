@@ -143,8 +143,7 @@ function CraftStrip() {
 
       <div
         ref={trackRef}
-        className="flex gap-6 px-6 md:gap-10 md:px-[10vw] md:pt-16"
-        style={{ overflowX: typeof window !== 'undefined' && window.innerWidth < 768 ? 'hidden' : 'visible' }}
+        className="flex gap-6 px-6 overflow-hidden md:overflow-visible md:gap-10 md:px-[10vw] md:pt-16"
       >
         {STYLES.map((s, i) => (
           <StyleCard key={s.name} style={s} index={i} />
