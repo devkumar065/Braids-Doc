@@ -117,6 +117,16 @@ function CraftStrip() {
     return () => ctx.revert();
   }, []);
 
+  const scroll = (direction: "left" | "right") => {
+    if (trackRef.current) {
+      const scrollAmount = window.innerWidth < 768 ? 304 : 420;
+      trackRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <section ref={containerRef} className="relative overflow-hidden py-20 md:py-0 md:h-screen md:flex md:items-center">
       <div className="mx-auto mb-10 flex w-full max-w-[1400px] items-end justify-between px-6 md:absolute md:left-0 md:right-0 md:top-24 md:mb-0 md:px-10">
@@ -134,10 +144,27 @@ function CraftStrip() {
       <div
         ref={trackRef}
         className="flex gap-6 px-6 md:gap-10 md:px-[10vw] md:pt-16"
+        style={{ overflowX: typeof window !== 'undefined' && window.innerWidth < 768 ? 'hidden' : 'visible' }}
       >
         {STYLES.map((s, i) => (
           <StyleCard key={s.name} style={s} index={i} />
         ))}
+      </div>
+
+      {/* Slider Controls (Mobile Only) */}
+      <div className="mx-auto mt-8 flex w-full max-w-[1400px] justify-center gap-4 px-6 md:hidden">
+        <button
+          onClick={() => scroll("left")}
+          className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/30 bg-ink text-gold transition-colors hover:bg-gold/10"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button
+          onClick={() => scroll("right")}
+          className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/30 bg-ink text-gold transition-colors hover:bg-gold/10"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
       </div>
     </section>
   );
@@ -195,20 +222,26 @@ function StoryTeaser() {
         />
       </motion.div>
 
-      <div className="relative mx-auto max-w-3xl px-6 text-center">
+      {/* Top Right Label */}
+      <div className="absolute top-8 right-6 z-10 md:top-12 md:right-12">
         <p className="text-[10px] uppercase tracking-[0.4em] text-gold">Our Story</p>
-        <h2 className="mt-8 font-display text-4xl leading-[1.15] md:text-6xl">
+      </div>
+
+      <div className="relative mx-auto max-w-3xl px-6 text-center z-10 flex h-full flex-col justify-center">
+        <h2 className="font-display text-4xl leading-[1.15] md:text-6xl">
           <SplitWords text="It's more than hair. It's legacy, identity, and self-love." />
         </h2>
-        <div className="mt-10">
-          <Link
-            to="/about"
-            data-cursor="view"
-            className="text-[11px] uppercase tracking-[0.3em] text-gold hover:text-gold-light"
-          >
-            Read my journey →
-          </Link>
-        </div>
+      </div>
+
+      {/* Bottom Right Link */}
+      <div className="absolute bottom-8 right-6 z-10 md:bottom-12 md:right-12">
+        <Link
+          to="/about"
+          data-cursor="view"
+          className="text-[11px] uppercase tracking-[0.3em] text-gold hover:text-gold-light"
+        >
+          Read my journey →
+        </Link>
       </div>
     </section>
   );
