@@ -67,20 +67,20 @@ function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-ink"
+      className="relative flex min-h-[70vh] md:min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-ink"
     >
       {/* Background Image containing the brand name */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center pt-[100px] sm:pt-[120px]">
+      <div className="absolute inset-0 z-0 flex items-center justify-center pt-[80px] sm:pt-[100px] md:pt-[120px]">
         <motion.img
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           src={heroBg}
           alt="Braids Doc Luxury Braiding Studio"
-          className="h-full w-full object-cover object-top"
+          className="h-full w-full object-contain object-center md:object-cover md:object-top"
         />
         {/* Subtle bottom gradient to blend with the next section */}
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-32 md:h-40 bg-gradient-to-t from-ink to-transparent" />
       </div>
 
 
