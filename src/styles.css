@@ -1,0 +1,170 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-deep: var(--gold-deep);
+  --color-ivory: var(--ivory);
+  --color-ink: var(--ink);
+  --font-display: "Cormorant Garamond", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+:root {
+  --radius: 0.125rem;
+  --background: oklch(0.08 0.005 60);
+  --foreground: oklch(0.95 0.015 80);
+  --card: oklch(0.11 0.008 60);
+  --card-foreground: oklch(0.95 0.015 80);
+  --popover: oklch(0.11 0.008 60);
+  --popover-foreground: oklch(0.95 0.015 80);
+  --primary: oklch(0.78 0.13 80);
+  --primary-foreground: oklch(0.08 0.005 60);
+  --secondary: oklch(0.18 0.01 60);
+  --secondary-foreground: oklch(0.95 0.015 80);
+  --muted: oklch(0.15 0.01 60);
+  --muted-foreground: oklch(0.65 0.02 80);
+  --accent: oklch(0.78 0.13 80);
+  --accent-foreground: oklch(0.08 0.005 60);
+  --destructive: oklch(0.55 0.2 25);
+  --destructive-foreground: oklch(0.95 0.015 80);
+  --border: oklch(0.25 0.02 80 / 40%);
+  --input: oklch(0.2 0.015 80);
+  --ring: oklch(0.78 0.13 80);
+
+  --gold: #c9a24c;
+  --gold-light: #f0d78c;
+  --gold-deep: #8b6f2a;
+  --ivory: #f5f0e6;
+  --ink: #0a0806;
+}
+
+.dark {
+  --background: oklch(0.08 0.005 60);
+  --foreground: oklch(0.95 0.015 80);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    background-color: var(--ink);
+  }
+  body {
+    background-color: var(--ink);
+    color: var(--ivory);
+    font-family: var(--font-sans);
+    cursor: none;
+  }
+  @media (pointer: coarse) {
+    body {
+      cursor: auto;
+    }
+  }
+  ::selection {
+    background: var(--gold);
+    color: var(--ink);
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility text-gold {
+  color: var(--gold);
+}
+@utility bg-gold {
+  background-color: var(--gold);
+}
+@utility border-gold {
+  border-color: var(--gold);
+}
+
+@keyframes gold-sweep {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@utility gold-shine {
+  background: linear-gradient(
+    100deg,
+    var(--gold-deep) 0%,
+    var(--gold) 30%,
+    var(--gold-light) 50%,
+    var(--gold) 70%,
+    var(--gold-deep) 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gold-sweep 4s ease-in-out infinite;
+}
+
+@keyframes radar-ping {
+  0% { transform: scale(0.6); opacity: 0.6; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 162, 76, 0.4); }
+  50% { box-shadow: 0 0 20px 6px rgba(201, 162, 76, 0.25); }
+}
+@utility pulse-gold {
+  animation: pulse-gold 2s ease-in-out infinite;
+}
+
+@keyframes strand-pull {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+@utility strand-pull {
+  animation: strand-pull 1.6s ease-in-out infinite;
+}
+
+/* hide native cursor on interactive elements too */
+a, button, [role="button"], input, textarea, select, label {
+  cursor: none;
+}
+@media (pointer: coarse) {
+  a, button, [role="button"], input, textarea, select, label {
+    cursor: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
